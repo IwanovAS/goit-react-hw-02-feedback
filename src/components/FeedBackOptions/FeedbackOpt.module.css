@@ -1,4 +1,22 @@
+.feedbackBtn {
+    font-size: 20px;
+    padding: 5px 20px;
+
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: skyblue;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
 .feedbackDiv {
     display: flex;
-    gap: 5px;
+    gap: 40px;
+    justify-content: center;
+}
+
+.feedbackBtn:hover {
+    background-color: teal;
+    color: azure;
 }
