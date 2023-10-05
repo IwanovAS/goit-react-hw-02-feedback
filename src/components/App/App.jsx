@@ -3,7 +3,7 @@ import { FeedbackOptions } from 'components/FeedBackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
 import { Statistics } from 'components/Statistics/Statistics';
 import { Notification } from 'components/Notification/Notification';
-import css from './App.module.css'
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -12,14 +12,20 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleFeedback = e => {
-    if (e === 'Good') {
-      this.setState({ good: this.state.good + 1 });
-    } else if (e === 'Neutral') {
-      this.setState({ neutral: this.state.neutral + 1 });
-    } else if (e === 'Bad') {
-      this.setState({ bad: this.state.bad + 1 });
-    }
+  // handleFeedback = e => {
+  //   if (e === 'Good') {
+  //     this.setState({ good: this.state.good + 1 });
+  //   } else if (e === 'Neutral') {
+  //     this.setState({ neutral: this.state.neutral + 1 });
+  //   } else if (e === 'Bad') {
+  //     this.setState({ bad: this.state.bad + 1 });
+  //   }
+  // };
+
+  handleFeedback = option => {
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
+    }));
   };
 
   totalFeedback = () => {
@@ -35,13 +41,15 @@ export class App extends Component {
   };
 
   render() {
+    const options = Object.keys(this.state);
+
     return (
       <div className={css.container}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['Good', 'Neutral', 'Bad']}
+            options={options}
             onLeaveFeedback={this.handleFeedback}
-          />{' '}
+          />
         </Section>
 
         <Section title="Statistics">
